@@ -2,7 +2,7 @@
   "name": "@georgedoescode/fluid-pattern-worklet",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "worklet.bundle.js",
   "scripts": {
     "serve": "live-server --port=1234",
     "watch:js": "esbuild worklet.js --bundle --watch --outfile=worklet.bundle.js",
