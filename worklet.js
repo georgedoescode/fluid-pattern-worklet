@@ -15,6 +15,7 @@ class FluidPattern {
       "--fluid-pattern-shape-bias-arc",
       "--fluid-pattern-shape-bias-line",
       "--fluid-pattern-shape-bias-rect",
+      "--fluid-pattern-points",
       ...COLORS,
     ];
   }
@@ -52,10 +53,18 @@ class FluidPattern {
         random(0, 8),
     };
 
+    let points = props.get("--fluid-pattern-points");
+
+    if (points.length === 1) {
+      points = parseInt(points);
+    } else {
+      points = 24;
+    }
+
     const { cells } = createVoronoiTessellation({
       width,
       height,
-      points: [...Array(24)].map(() => ({
+      points: [...Array(points)].map(() => ({
         x: random(0, width),
         y: random(0, height),
       })),

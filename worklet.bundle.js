@@ -2865,6 +2865,7 @@
         "--fluid-pattern-shape-bias-arc",
         "--fluid-pattern-shape-bias-line",
         "--fluid-pattern-shape-bias-rect",
+        "--fluid-pattern-points",
         ...COLORS
       ];
     }
@@ -2888,10 +2889,16 @@
         line: parseFloat(props.get("--fluid-pattern-shape-bias-line")) || At(0, 8),
         rectangle: parseFloat(props.get("--fluid-pattern-shape-bias-rect")) || At(0, 8)
       };
+      let points = props.get("--fluid-pattern-points");
+      if (points.length === 1) {
+        points = parseInt(points);
+      } else {
+        points = 24;
+      }
       const { cells } = Qi({
         width,
         height,
-        points: [...Array(24)].map(() => ({
+        points: [...Array(points)].map(() => ({
           x: At(0, width),
           y: At(0, height)
         })),
